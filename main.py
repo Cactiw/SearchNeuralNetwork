@@ -7,6 +7,7 @@ import numpy as np
 
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import accuracy_score, f1_score, mean_absolute_error
 
 
 vectorizer = CountVectorizer()
@@ -65,3 +66,6 @@ print(test_got)
 print(compare_results(test_got, test_result) / len(test_result) * 100)
 
 
+# print("MAE score: " + str(mean_absolute_error(test_got, test_result)) + ".")
+print("Accuracy score: " + str(accuracy_score(test_got, test_result)) + ".")
+print("F-measure: " + str(f1_score(test_got, test_result, average='macro')) + ".")
