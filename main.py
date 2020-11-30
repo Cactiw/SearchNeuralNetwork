@@ -46,11 +46,11 @@ train_result = train_df["evaluation"]
 test_sentences = test_df["speech"]
 test_result = test_df["evaluation"]
 
-vectorizer = CountVectorizer()
+vectorizer = TfidfVectorizer()
 
 train_matrix = vectorizer.fit_transform(train_sentences)
 
-vectorizer_test = CountVectorizer(vocabulary=vectorizer.vocabulary_)
+vectorizer_test = TfidfVectorizer(vocabulary=vectorizer.vocabulary_)
 test_matrix = vectorizer_test.fit_transform(test_sentences)
 
 
@@ -68,8 +68,8 @@ for model_class in models:
     print(compare_results(test_got, test_result) / len(test_result) * 100)
 
 
-    print("Accuracy score: " + str(accuracy_score(test_got, test_result)) + ".")
-    print("F-measure: " + str(f1_score(test_got, test_result, average='macro')) + ".")
+    print("Accuracy: " + str(accuracy_score(test_got, test_result)) + ".")
+    print("F-мера: " + str(f1_score(test_got, test_result, average='macro')) + ".")
 
     # Можно пообщаться с моделью - раскомментировать код)
     # sent_in = None
